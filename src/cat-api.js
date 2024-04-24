@@ -9,6 +9,7 @@ export function fetchBreeds() {
 			return res.json();
 		}
 	});
+    
 }
 
 export function fetchCatByBreed(breedId) {

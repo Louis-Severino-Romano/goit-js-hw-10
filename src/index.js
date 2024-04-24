@@ -11,12 +11,14 @@ errorEl.classList.add("is-hidden");
 function chooseBreed(){
     fetchBreeds()
 		.then((data) => {
-			loaderEl.classList.replace("loader", "is-hidden");
-
+            	loaderEl.classList.replace("loader", "is-hidden");
+            
 			let optionsMarkup = data.map(({ name, id }) => {
+               
 				return `<option value=${id}>${name}</option>`;
-				//<option value={catId} >Cat Name</option>
+				
 			});
+           
 			breedSelectEl.insertAdjacentHTML("beforeend", optionsMarkup);
 			breedSelectEl.classList.remove("is-hidden");
 		})
