@@ -1,8 +1,25 @@
-// const baseUrl=https://api.thecatapi.com/v1/images/search;
-// const api_key=live_tKr4IYSQLzyDcnpfmmXMohRhtJFemy4XW1xBvdKb3wBzX1f7kQfxOKmng3gzh4C8;
+const baseUrl= "https://api.thecatapi.com/v1";
+const api_key="live_tKr4IYSQLzyDcnpfmmXMohRhtJFemy4XW1xBvdKb3wBzX1f7kQfxOKmng3gzh4C8";
 
-// export function fetchBreeds(){
-//     return fetch('https://api.thecatapi.com/v1/images/search?x-api-key=live_tKr4IYSQLzyDcnpfmmXMohRhtJFemy4XW1xBvdKb3wBzX1f7kQfxOKmng3gzh4C8')
-//     .then((response) => response.json())
-//     .then((data) => console.log(data));
-// }
+export function fetchBreeds(){
+   return fetch (`${baseUrl}/breeds?x-api-key=${api_key}`).then((res)=> {
+    if (!res.ok){
+        throw new Error(res.status);
+    }
+    else{
+        return (res.json);
+    }
+   });
+   
+}
+
+export function fetchCatByBreed(breedId){
+ return fetch(`${baseUrl}/images/search?x-api-key=${api_key}&breed_id=${breedId}`).then((res)=>{
+    if (!res.ok){
+        throw new Error(res.status);
+    }
+    else{
+        return (res.json);
+    } 
+ });
+}
